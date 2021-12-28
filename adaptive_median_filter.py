@@ -67,14 +67,14 @@ def level_B(img, Zmin, Zmed, Zmax):
 
 if __name__ == "__main__":
     path = pathlib.Path(__file__).parent.resolve()
-    img = cv2.imread(str(path) + "/test_img_wang.tif", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread(str(path) + "/img/test_img_wang.tif", cv2.IMREAD_GRAYSCALE)
     # img = cv2.imread(str(path) + "/lenna_512.jpg", cv2.IMREAD_GRAYSCALE)
     # print(img.shape)
 
     noise = add_noise(img)
     noise = noise.astype(np.uint8)
-    cv2.imwrite(str(path) + '/add_noise.jpg',noise)
+    cv2.imwrite(str(path) + '/out/add_noise.jpg',noise)
 
     out = adaptive_median_filter(noise)
     out = out.astype(np.uint8)
-    cv2.imwrite(str(path) + '/result.jpg', out)
+    cv2.imwrite(str(path) + '/out/result.jpg', out)
